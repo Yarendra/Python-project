@@ -43,7 +43,7 @@ def remove_readonly(func, path, excinfo):
     func(path)
 
 def clear_previous_index():
-    """Clears the previous FAISS index if it exists."""
+    """Clears the previous Pinecone index if it exists."""
     index.delete(delete_all=True)
 
 def extract_text_from_pdf(file):
@@ -151,13 +151,13 @@ if not st.session_state.file_uploaded:
     file = st.file_uploader("", type=["pdf"])
     if st.button("Upload"):
         if file:
-            #progress = st.progress(0,"File is uploading, please wait...")
+            
             full_text = extract_text_from_pdf(file)
-            #progress.progress( 25, "File uploading, please wait...")
+            
             chunks = split_text_chunks(full_text)
-            #progress.progress(50, "File uploading, please wait...")
+            
             vector_store= load_vector_data(chunks , file.name)
-            #progress.progress(100, "File uploading, please wait...")
+            
           
             st.session_state.pdf_chunks = chunks
             st.session_state.vector_store = vector_store
