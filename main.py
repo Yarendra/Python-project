@@ -55,7 +55,7 @@ def extract_text_from_pdf(file):
 def split_text_chunks(text):
     """Splits the text into manageable chunks for processing.
     """
-    chunks = RecursiveCharacterTextSplitter( chunk_size=15000, chunk_overlap=500)
+    chunks = RecursiveCharacterTextSplitter( chunk_size=5000, chunk_overlap=100)
     return chunks.split_text(text)
   
     
